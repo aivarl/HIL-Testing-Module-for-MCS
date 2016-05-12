@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<ruleset name="Favorites" xmlns="http://pmd.sf.net/ruleset/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+  xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+  <rule ref="rulesets/basic.xml" />
+
+  <rule ref="rulesets/braces.xml" />
+
+  <rule ref="rulesets/codesize.xml">
+    <exclude name="TooManyFields" />
+    <exclude name="TooManyMethods" />
+    <exclude name="ExcessivePublicCount" />
+    <exclude name="CyclomaticComplexity" />
+  </rule>
+
+  <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+    <properties>
+      <property name="reportLevel" value="11" />
+    </properties>
+
+    <priority>5</priority>
+  </rule>
+
+  <rule ref="rulesets/clone.xml">
+    <exclude name="CloneThrowsCloneNotSupportedException" />
+  </rule>
+
+  <rule ref="rulesets/controversial.xml/UnnecessaryConstructor" />
+  <rule ref="rulesets/controversial.xml/UnusedModifier" />
+  <rule ref="rulesets/controversial.xml/AssignmentInOperand" />
+  <rule ref="rulesets/controversial.xml/UnnecessaryParentheses" />
+
+  <rule ref="rulesets/coupling.xml">
+    <exclude name="ExcessiveImports" />
+    <exclude name="LooseCoupling" />
+    <exclude name="CouplingBetweenObjects" />
+  </rule>
+
+  <rule ref="rulesets/coupling.xml/CouplingBetweenObjects">
+    <priority>5</priority>
+  </rule>
+
+  <rule ref="rulesets/design.xml">
+    <exclude name="AvoidReassigningParameters" />
+    <exclude name="ImmutableField" />
+    <exclude name="UseSingleton" />
+    <exclude name="NonThreadSafeSingleton" />
+    <exclude name="UncommentedEmptyMethod" />
+    <exclude name="UncommentedEmptyConstructor" />
+    <exclude name="UseLocaleWithCaseConversions" />
+    <exclude name="SimpleDateFormatNeedsLocale" />
+    <exclude name="AbstractClassWithoutAbstractMethod" />
+    <exclude name="AbstractClassWithoutAnyMethod" />
+    <exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
+    <exclude name="AvoidDeeplyNestedIfStmts" />
+    <exclude name="ConfusingTernary" />
+    <exclude name="NonStaticInitializer" />
+  </rule>
+
+  <rule ref="rulesets/design.xml/AvoidDeeplyNestedIfStmts">
+    <properties>
+      <property name="problemDepth" value="6" />
+    </properties>
+  </rule>
+
+  <rule ref="rulesets/finalizers.xml" />
+
+  <rule ref="rulesets/imports.xml">
+    <exclude name="TooManyStaticImports" />
+    <exclude name="UnusedImports" />
+  </rule>
+
+  <rule ref="rulesets/junit.xml">
+    <exclude name="JUnitSpelling" />
+    <exclude name="JUnitAssertionsShouldIncludeMessage" />
+    <exclude name="JUnitTestsShouldIncludeAssert" />
+    <exclude name="TestClassWithoutTestCases" />
+  </rule>
+
+  <rule ref="rulesets/logging-jakarta-commons.xml" />
+
+  <rule ref="rulesets/migrating_to_junit4.xml/JUnitUseExpected" />
+
+  <rule ref="rulesets/naming.xml">
+    <exclude name="AbstractNaming" />
+    <exclude name="ShortMethodName" />
+    <exclude name="ShortVariable" />
+    <exclude name="LongVariable" />
+    <exclude name="MethodNamingConventions" />
+    <exclude name="AvoidFieldNameMatchingTypeName" />
+    <exclude name="AvoidFieldNameMatchingMethodName" />
+    <exclude name="BooleanGetMethodName" />
+  </rule>
+
+  <rule ref="rulesets/naming.xml/LongVariable">
+    <properties>
+      <property name="minimum" value="40" />
+    </properties>
+  </rule>
+
+  <rule ref="rulesets/optimizations.xml">
+    <exclude name="AvoidInstantiatingObjectsInLoops" />
+    <exclude name="LocalVariableCouldBeFinal" />
+    <exclude name="MethodArgumentCouldBeFinal" />
+    <exclude name="UseStringBufferForStringAppends" />
+    <exclude name="SimplifyStartsWith" />
+  </rule>
+
+  <rule ref="rulesets/strictexception.xml" />
+
+  <rule ref="rulesets/strings.xml">
+    <exclude name="AvoidDuplicateLiterals" />
+  </rule>
+
+  <rule ref="rulesets/typeresolution.xml">
+    <exclude name="LooseCoupling" />
+    <exclude name="UnusedImports" />
+  </rule>
+
+  <rule ref="rulesets/unusedcode.xml">
+    <exclude name="UnusedPrivateField" />
+  </rule>
+
+</ruleset>

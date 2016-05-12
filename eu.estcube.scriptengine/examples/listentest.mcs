@@ -1,0 +1,3 @@
+send "EPS:getdebug"
+def x = listen "debug"
+log x as String

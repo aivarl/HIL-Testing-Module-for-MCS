@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+        http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.2.xsd">
+
+    <context:component-scan base-package="eu.estcube.common, eu.estcube.webserver, eu.estcube.codec, org.hbird.business.api, org.hbird.business.core" />
+
+    <!-- Properties config -->
+    <bean id="propertyPlaceholder"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:service.properties</value>
+                <value>file:service.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <mongo:mongo id="mongo-db" host="${mongo.host}" port="${mongo.port}" />
+    <mongo:db-factory mongo-ref="mongo-db" dbname="hbird" />
+
+    <mongo:mapping-converter>
+        <mongo:custom-converters>
+            <mongo:converter>
+                <bean class="org.hbird.business.archive.converters.Vector3DConverter" />
+            </mongo:converter>
+        </mongo:custom-converters>
+    </mongo:mapping-converter>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+        <constructor-arg name="mongoConverter" ref="mappingConverter" />
+    </bean>
+
+    <bean id="dataAccess" class="org.hbird.business.archive.dao.mongo.MongoDataAccess">
+        <constructor-arg ref="mongoTemplate" />
+    </bean>
+    
+    <bean id="orbitalDataAccess" class="org.hbird.business.archive.dao.mongo.MongoOrbitalDataAccess">
+        <constructor-arg ref="mongoTemplate" />
+    </bean>
+
+    <bean id="catalogue" class="org.hbird.business.api.impl.Catalogue">
+        <constructor-arg index="0" name="dao" ref="dataAccess" />
+    </bean>
+
+    <!-- GcpStruct -->
+    <bean id="gcpStruct" class="eu.estcube.codec.gcp.struct.GcpStruct">
+        <constructor-arg value="${gcp.commands.description}"></constructor-arg>
+        <constructor-arg value="${gcp.replies.description}"></constructor-arg>
+    </bean>
+
+    <bean id="publisher" class="org.hbird.business.api.impl.AmqPublisher" init-method="start">
+        <constructor-arg index="0" name="delegate">
+            <bean class="org.hbird.business.archive.control.FilteringPublisher">
+                <constructor-arg index="0" name="delegate">
+                    <bean class="org.hbird.business.api.impl.DaoPublisher">
+                        <constructor-arg index="0" name="dao" ref="dataAccess" />
+                    </bean>
+                </constructor-arg>
+                <constructor-arg index="1" name="filter">
+                    <bean class="org.hbird.business.archive.control.NegateFilter">
+                        <constructor-arg index="0" name="filter">
+                            <bean class="org.hbird.business.archive.control.ClassFilter">
+                                <constructor-arg index="0" name="acceptableClasses">
+                                    <set>
+                                        <value>org.hbird.exchange.core.BusinessCard</value>
+                                        <value>org.hbird.exchange.interfaces.IStartableEntity</value>
+                                    </set>
+                                </constructor-arg>
+                                <constructor-arg index="1" name="acceptSubclasses" value="true" />
+                            </bean>
+                        </constructor-arg>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="orbitDataCalculator" class="org.hbird.business.navigation.orekit.OrbitDataCalculator" />
+
+    <!-- AMQ config -->
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${jms.url}" />
+    </bean>
+
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+        init-method="start" destroy-method="stop">
+        <property name="maxConnections" value="8" />
+        <property name="connectionFactory" ref="jmsConnectionFactory" />
+        <!-- TODO: bug in PooledConnection code, remove when upgrading to ActiveMQ 5.9.0 -->
+        <property name="idleTimeout" value="0"/>
+    </bean>
+
+    <bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="pooledConnectionFactory" />
+        <property name="concurrentConsumers" value="1" />
+    </bean>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="jmsConfig" />
+    </bean>
+
+    <!-- Web server config -->
+    <camelContext id="eu.estcube.webserver" xmlns="http://camel.apache.org/schema/spring">
+        <!-- TODO - 14.08.2013, kimmell - enable when upgrading to Camel 2.12 -->
+        <!-- <package>eu.estcube.webserver</package> -->
+    </camelContext>
+
+</beans>

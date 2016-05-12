@@ -1,0 +1,42 @@
+<!-- Controller: ol3 as MapController. -->
+
+<div>
+    <style>
+    .ol-mouse-position {
+    color: rgb(255,255,255);
+    }
+    </style>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container col-lg-10 map" id="map2" resize></div>
+            <div class="col-lg-2">
+                    <h6>openlayers 3 map</h6>
+                <div class="block">
+                    <h5>Ground Stations</h5>
+                    <blockquote>
+                        <div data-ng-repeat="gs in ol3.selectedGS"
+                            class="checkbox">
+                            <label> <input type="checkbox"
+                                data-ng-model="gs.enabled"
+                                data-ng-change="ol3.addOrRemoveGS(gs.enabled, gs.ID)">{{gs.name}}
+                            </label>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="block">
+                    <h5>Satellites</h5>
+                    <blockquote>
+                        <div data-ng-repeat="sat in ol3.selectedSat"
+                            class="checkbox">
+                            <label> <input type="checkbox"
+                                data-ng-model="sat.enabled"
+                                data-ng-change="ol3.addOrRemoveSat(sat.enabled, sat.ID)">{{sat.name}}
+                            </label>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

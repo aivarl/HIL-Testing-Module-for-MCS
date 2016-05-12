@@ -1,0 +1,63 @@
+.fixed-panel {
+  min-height: 550px;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
+.block {
+    margin: 12px;
+    padding: 12px;
+    border: 1px rgba(0, 0, 100, 0.1);
+    /* background-color: rgba(0, 0, 100, 0.1); */
+}
+
+/* Center the navigation bar */
+.custom-middle{
+	margin-left: auto;
+    margin-right: auto;
+    width: 25%;	
+}
+
+/* Angular animations */
+
+li {
+    opacity: 1;
+}
+li.ng-enter {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0;
+}
+li.ng-enter-active {
+    opacity: 1;
+}
+ul {
+    opacity: 1;
+}
+ul.ng-enter {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0;
+}
+ul.ng-enter-active {
+    opacity: 1;
+}
+
+.animate.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  
+  background: yellow;
+  background-color: yellow;
+}
+.animate.ng-enter-active {
+    background: #fff;
+}
+.animate.ng-move {
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    opacity: 0;
+}
+.animate.ng-move-active {
+    opacity: 1;
+}

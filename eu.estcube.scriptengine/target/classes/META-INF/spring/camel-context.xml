@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <context:component-scan
+            base-package="eu.estcube.scriptengine, org.hbird.business.api, org.hbird.business.core, eu.estcube.common">
+        <context:exclude-filter type="regex" expression="eu\.estcube\.common\.utils\..*"/>
+        <context:exclude-filter type="regex" expression="eu\.estcube\.common\.processor\..*"/>
+    </context:component-scan>
+
+    <!-- Properties config -->
+    <bean id="propertyPlaceholder"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:service.properties</value>
+                <value>file:service.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- AMQ config -->
+    <bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${jms.url}"/>
+    </bean>
+
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+          init-method="start" destroy-method="stop">
+        <property name="maxConnections" value="8"/>
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+
+    <bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="pooledConnectionFactory"/>
+        <property name="concurrentConsumers" value="1"/>
+    </bean>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
+
+    <bean id="scriptIO" class="eu.estcube.scriptengine.camel.CamelScriptIO">
+        <constructor-arg ref="template"/>
+    </bean>
+
+    <bean id="scriptLogger" class="eu.estcube.scriptengine.camel.CamelScriptLogger">
+        <constructor-arg ref="template"/>
+    </bean>
+
+    <bean id="scriptRunProcessor" class="eu.estcube.scriptengine.camel.ScriptRunProcessor" />
+
+    <bean id="scriptContext" class="eu.estcube.scriptengine.ScriptContext"/>
+
+    <camelContext id="eu.estcube.scriptengine" xmlns="http://camel.apache.org/schema/spring">
+        <template id="template"/>
+        <!-- <package>eu.estcube.calibration</package> -->
+    </camelContext>
+</beans>

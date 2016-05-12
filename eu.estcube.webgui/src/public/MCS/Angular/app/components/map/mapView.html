@@ -1,0 +1,41 @@
+<!-- Controller: map as MapController. -->
+
+<div>
+    <style>
+        #map {
+        	width: 83%;
+        	height: 900px;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container col-lg-10" id="map" resize></div>
+            <div class="col-lg-2">
+                <div class="block">
+                    <h5>Ground Stations</h5>
+                    <blockquote>
+                        <div data-ng-repeat="gs in map.selectedGS"
+                            class="checkbox">
+                            <label> <input type="checkbox"
+                                data-ng-model="gs.enabled"
+                                data-ng-change="map.addOrRemoveGS(gs.enabled, gs.ID)">{{gs.name}}
+                            </label>
+                        </div>
+                    </blockquote>
+                </div>
+                <div class="block">
+                    <h5>Satellites</h5>
+                    <blockquote>
+                        <div data-ng-repeat="sat in map.selectedSat"
+                            class="checkbox">
+                            <label> <input type="checkbox"
+                                data-ng-model="sat.enabled"
+                                data-ng-change="map.addOrRemoveSat(sat.enabled, sat.ID)">{{sat.name}}
+                            </label>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+
+
+* Create new module under js/module
+* Add module route config into config/routes.js
+* Add menu links to config/menu.js
+* 

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <table class="table table-hover ">
+      <thead>
+        <tr>
+          <th><a href="" data-ng-click="orderByField='ID'; reverseSort = !reverseSort">Component name</a></th>
+          <th><a href="" data-ng-click="orderByField='timestamp'; reverseSort = !reverseSort">Timestamp</a></th>
+          <th><a href="" data-ng-click="orderByField='status'; reverseSort = !reverseSort">Status</a></th>
+          <th><a href="" data-ng-click="orderByField='host'; reverseSort = !reverseSort">Host</a></th>
+          <th><a href="" data-ng-click="orderByField='period'; reverseSort = !reverseSort">Period</a></th>
+          <th><a href="" data-ng-click="orderByField='description'; reverseSort = !reverseSort">Description</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat="businessCard in system.businessCards | orderBy:orderByField:reverseSort" class="animate">
+          <td>{{businessCard.ID}}</td>
+          <td>{{businessCard.timestamp | date: system.dateFormat}}</td>
+          <td data-ng-class="{'text-success' : businessCard.status == 'OK',
+                              'text-warning' : businessCard.status == 'Warning',
+                              'text-danger' : businessCard.status == 'Error'}">{{businessCard.status}}</td>
+          <td>{{businessCard.host}}</td>
+          <td>{{businessCard.period}}</td>
+          <td>{{businessCard.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

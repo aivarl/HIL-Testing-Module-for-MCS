@@ -1,0 +1,55 @@
+<div class="container-fluid">
+
+    <div class="btn-group btn-group-justified custom-middle">
+      <a data-ng-class="{active : !TNCactive}" data-ng-click="TNCactive = !TNCactive" class="btn btn-default">AX.25</a>
+      <a data-ng-class="{active : TNCactive}" data-ng-click="TNCactive = !TNCactive" class="btn btn-default">TNC</a>
+    </div>
+    <div data-ng-hide="TNCactive" id="profile">
+        <table class="table table-hover ">
+          <thead>
+            <tr>
+              <th><nobr><a href="" data-ng-click="orderByField='timestamp'; reverseSort = !reverseSort">Timestamp</a></nobr></th>
+              <th><nobr>Type</nobr></th>
+              <th><nobr>Ground Station</nobr></nobr></th>
+              <th><nobr>Satellite</nobr></th>
+              <th><nobr>Orbit</nobr></th>
+              <th><nobr>Source</nobr></th>
+              <th><nobr>Destination Address</nobr></th>
+              <th><nobr>Source Address</nobr></th>
+              <th>Info</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr data-ng-repeat="ax25Frame in tnc.AX25UIFrames | orderBy:orderByField:reverseSort" class="animate">
+              <td class="text-primary"><nobr>{{ax25Frame.headers.timestamp | date: tnc.dateFormat}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.headers.communicationLinkType}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.headers.groundStationId}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.headers.satelliteId}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.headers.orbitNumber}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.headers.issuedBy + " : " + (ax25Frame.headers.serialPortName || "-") + " : " + ax25Frame.headers.tncPort}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.frame.destAddr | Ax25AddressFormatter}}</nobr></td>
+              <td class="text-primary"><nobr>{{ax25Frame.frame.srcAddr | Ax25AddressFormatter}}</nobr></td>
+              <td class="text-primary">{{ax25Frame.frame.info}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div data-ng-show="TNCactive" id="home">
+        <table class="table table-hover ">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Type</th>
+              <th>Ground Station</th>
+              <th>Satellite</th>
+              <th>Orbit</th>
+              <th>Source</th>
+              <th>HEX dump</th>
+            </tr>
+          </thead>
+          <tbody>
+                <!-- table body -->
+          </tbody>
+        </table>
+    </div>
+</div>

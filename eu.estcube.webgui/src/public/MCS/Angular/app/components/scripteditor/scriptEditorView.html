@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8" id="editor" style="height: 500px"></div>
+
+        <div class="col-md-4">
+            <button ng-click="runScript()">Run script</button>
+            <div style="width: 100%; font-family: Consolas; padding: 2px; overflow-y: auto; max-height: 500px">
+                <div ng-repeat="entry in log">
+                    <span ng-style="{color: getTypeColor(entry.type)}">{{entry.type}}</span>: {{entry.msg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

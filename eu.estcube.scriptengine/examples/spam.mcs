@@ -1,0 +1,12 @@
+state(Main) {
+    while (true) {
+        log "Sending debug"
+        send("EPS:getdebug")
+        def resp = listenParam("bat_a")
+        log "Received bat_a $resp"
+
+        sleep(3000)
+    }
+}
+
+gotoState Main

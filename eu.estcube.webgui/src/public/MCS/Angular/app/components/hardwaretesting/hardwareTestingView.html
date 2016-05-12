@@ -1,0 +1,92 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-7" style="height: 500px">
+		<div class="panel panel-primary">
+  <div class="panel-heading">LOG</div>
+  <div class="panel-body fixed-panel">
+  		{{scriptLog}}
+  </div>
+</div>
+		</div>
+
+		<div class="col-md-5">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Script: hardwareTest.mcs
+
+					<div class="btn-group">
+						<input type="file" id="file" name="file"/>
+						<a ng-click="loadTest()" class="btn btn-default">Load test</a>
+					</div>
+				</div>
+				<div class="panel-footer">Status: {{testStatus}}</div>
+				<!-- ICONS AND HOW TO USE: 6.03.2016-->
+				<!-- http://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-icons.php -->
+				<div class="btn-group btn-group-justified">
+					<a ng-click="startTest()" class="btn btn-default"><span
+						class="glyphicon glyphicon-play"></span> START</a> <a
+						ng-click="stopTest()" class="btn btn-default">STOP</a> <a class="btn btn-default">PAUSE</a>
+					<a class="btn btn-default">NEXT STEP</a>
+				</div>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Hardware connection:</div>
+				<div class="panel-body">Status: Not connected</div>
+			</div>
+			<div class="jumbotron">
+				<p>
+					<b>TEST RESULTS:</b>
+				</p>
+				<table class="table table-striped table-hover ">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Fail</th>
+							<th>Pass</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+						<tr class="success">
+							<td>2</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+						<tr class="danger">
+							<td>3</td>
+							<td>Column content</td>
+							<td>Column content</td>
+							<td>Column content</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--             <button ng-click="runScript()">Run script</button>
+            <div style="width: 100%; font-family: Consolas; padding: 2px; overflow-y: auto; max-height: 500px">
+                <div ng-repeat="entry in log">
+                    <span ng-style="{color: getTypeColor(entry.type)}">{{entry.type}}</span>: {{entry.msg}}
+                </div>
+            </div> -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label class="control-label" for="inputDefault"><b>Send command:</b></label>
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="command"> <span
+						class="input-group-btn">
+						<button ng-click="sendCommand()" class="btn btn-default" type="button">Send</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,7 @@
+send "EPS:bdsreset", [sec1: 2, sec2: 1]
+
+send "EPS:bdstime"
+send "EPS:getdebug"
+def params = listenParamMulti(["counter", "bat_a"])
+
+log "counter ${params.counter}; bat_a ${params.bat_a}"

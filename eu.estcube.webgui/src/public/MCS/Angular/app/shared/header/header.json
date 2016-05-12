@@ -1,0 +1,55 @@
+[
+  {
+    "type": "dropdown",
+    "url": "contacts",
+    "name": "Contacts",
+    "dropdown":[
+        {
+            "url":"map",
+            "name":"Map"
+        },
+        {
+            "url":"ol3",
+            "name":"OL3"
+        }
+    ]
+  },
+  {
+    "type": "link",
+    "url":"",
+    "name":"ESTCube-1"
+  },
+  {
+    "type": "dropdown",
+    "url":"gs",
+    "name":"Ground Stations",
+    "dropdown":[
+        {
+            "url":"gs/TNC",
+            "name":"TNC"
+        }
+    ]
+  },
+  {
+    "type": "dropdown",
+    "url":"system",
+    "name":"System",
+    "glyph":"glyphicon glyphicon-off",
+    "dropdown":[
+        {
+            "url":"system/components",
+            "name":"Components"
+        }
+    ]
+  },
+  {
+    "type": "link",
+    "url":"script/editor",
+    "name":"Script Editor"
+  },
+  {
+    "type": "link",
+    "url":"hardware/testing",
+    "name":"Hardware Testing"
+  }
+]

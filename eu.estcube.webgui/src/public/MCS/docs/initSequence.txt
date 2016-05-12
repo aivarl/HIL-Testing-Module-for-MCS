@@ -1,0 +1,12 @@
+
+1) Load main classes
+2) Load configuration. (loads all modules config and combines into one)
+3) Initializes Router
+4) Initializes Menu
+5) Shows current active module.
+
+
+To load config into your modules - include "config/config".
+
+Magic config keywords:
+* routes - all routes are set into this variable.

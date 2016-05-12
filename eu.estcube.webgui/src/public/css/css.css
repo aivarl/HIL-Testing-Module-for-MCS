@@ -1,0 +1,474 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    background-color: #141112;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6em;
+    letter-spacing: 0pt;
+    background-repeat: repeat-x;
+    font-size: 11pt;
+    overflow: inherit;
+    color:#fafafa;
+    margin: 12px;
+}
+
+.firstPage {
+ 	background-color: #141112;
+	color: #fff;
+	text-align: center;
+}
+.text-box {
+    padding: 5px;    
+    border: 1px solid #DDDDDD;
+    background: rgb(235,233,249);
+	background: -moz-linear-gradient(top, rgb(235,233,249) 0%, rgb(216,208,239) 50%, rgb(206,199,236) 51%, rgb(193,191,234) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(235,233,249)), color-stop(50%,rgb(216,208,239)), color-stop(51%,rgb(206,199,236)), color-stop(100%,rgb(193,191,234)));
+	background: -webkit-linear-gradient(top, rgb(235,233,249) 0%,rgb(216,208,239) 50%,rgb(206,199,236) 51%,rgb(193,191,234) 100%);
+	background: -o-linear-gradient(top, rgb(235,233,249) 0%,rgb(216,208,239) 50%,rgb(206,199,236) 51%,rgb(193,191,234) 100%);
+	background: -ms-linear-gradient(top, rgb(235,233,249) 0%,rgb(216,208,239) 50%,rgb(206,199,236) 51%,rgb(193,191,234) 100%);
+	background: linear-gradient(to bottom, rgb(235,233,249) 0%,rgb(216,208,239) 50%,rgb(206,199,236) 51%,rgb(193,191,234) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebe9f9', endColorstr='#c1bfea',GradientType=0 );
+    -moz-box-shadow: 0 0 2px #DDDDDD;
+    -webkit-box-shadow: 0 0 2px #DDDDDD;
+    box-shadow: 0 0 2px #DDDDDD;
+}
+
+.text-box:hover {
+    border:1px solid #cccccc;
+}
+
+.text-box:focus {
+    box-shadow:0 0 2px #FFFE00;
+}
+
+.button {
+	display: inline-block;
+	width : 65 px;
+	outline: none;
+	cursor: pointer;
+	text-align: left;
+	text-decoration: none;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 1em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+.blue {
+	color: #fef4e9;
+	border: solid 1px #006fac;
+	background: rgb(0,111,172);
+	background: -moz-linear-gradient(top,  rgb(0,111,172) 0%, rgb(7,126,192) 45%, rgb(25,146,213) 55%, rgb(6,118,179) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,111,172)), color-stop(45%,rgb(7,126,192)), color-stop(55%,rgb(25,146,213)), color-stop(100%,rgb(6,118,179)));
+	background: -webkit-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: -o-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: -ms-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: linear-gradient(to bottom,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006fac', endColorstr='#0676b3',GradientType=0 );
+}
+
+.blue:hover {
+	background: rgb(20,118,170);
+	background: -moz-linear-gradient(top,  rgb(20,118,170) 0%, rgb(80,152,191) 45%, rgb(93,170,211) 55%, rgb(30,126,178) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(20,118,170)), color-stop(45%,rgb(80,152,191)), color-stop(55%,rgb(93,170,211)), color-stop(100%,rgb(30,126,178)));
+	background: -webkit-linear-gradient(top,  rgb(20,118,170) 0%,rgb(80,152,191) 45%,rgb(93,170,211) 55%,rgb(30,126,178) 100%);
+	background: -o-linear-gradient(top,  rgb(20,118,170) 0%,rgb(80,152,191) 45%,rgb(93,170,211) 55%,rgb(30,126,178) 100%);
+	background: -ms-linear-gradient(top,  rgb(20,118,170) 0%,rgb(80,152,191) 45%,rgb(93,170,211) 55%,rgb(30,126,178) 100%);
+	background: linear-gradient(to bottom,  rgb(20,118,170) 0%,rgb(80,152,191) 45%,rgb(93,170,211) 55%,rgb(30,126,178) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1476aa', endColorstr='#1e7eb2',GradientType=0 );
+}
+
+.blue:active {
+	color: #fcd3a5;
+	background: rgb(0,111,172);
+	background: -moz-linear-gradient(top,  rgb(0,111,172) 0%, rgb(7,126,192) 45%, rgb(25,146,213) 55%, rgb(6,118,179) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,111,172)), color-stop(45%,rgb(7,126,192)), color-stop(55%,rgb(25,146,213)), color-stop(100%,rgb(6,118,179)));
+	background: -webkit-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: -o-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: -ms-linear-gradient(top,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	background: linear-gradient(to bottom,  rgb(0,111,172) 0%,rgb(7,126,192) 45%,rgb(25,146,213) 55%,rgb(6,118,179) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006fac', endColorstr='#0676b3',GradientType=0 );
+}
+
+#satelliteList, #groundStationsList, #fsSatelliteList, #userRoles {
+	font-size: 1.2em;
+	padding: 0;
+	width: 220px;
+	list-style-type: none;
+}
+
+#sBar {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 250px;
+	width: 30px;
+	height: 100%; 
+	background-color: #8a8a8a;
+	}
+
+.satellites {
+	position: absolute;
+	left: 340px;
+	top: 90px;
+}
+
+.groundStations {
+	position: absolute;
+	left: 585px;
+	top: 90px;
+}
+
+.userRoles {
+	position: absolute;
+	left: 830px;
+	top: 90px;
+}
+
+.radioBeaconInput {
+	position: absolute;
+	left: 350px;
+	top: 60px;
+}
+
+.footer {
+	position: absolute;
+}
+
+ #satelliteList li, #groundStationsList li, #fsSatelliteList li, #userRoles li {
+	cursor: pointer;
+	display: block;
+	position: relative;
+	border-top: 0px solid #006fac;
+	border-bottom: 0px solid #006fac;
+	padding: 11px 20%;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	font-size: 13px;
+	font-weight: 300;			
+	background-image:URL("../images/bag.png");
+	
+}
+
+#satelliteList li:hover, #groundStationsList li:hover, #fsSatelliteList li:hover, #userRoles li:hover {
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+	background: #8a8a8a;
+	border-color: transparent;
+}
+
+#gerenalWidgets, #navigationBar, #Gen {
+	font-size: 1.2em;
+	padding: 0;
+	width: 150px;
+	list-style-type: none;
+}
+
+
+#gerenalWidgets li , #Gen a{
+	cursor: pointer;
+	display: block;
+	position: relative;
+	border-top: 1px solid #006fac;
+	border-bottom: 1px solid #006fac;
+	padding: 11px 20%;
+	width: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	font-size: 13px;
+	font-weight: 300;			
+	background: rgb(59,157,206);
+	background: -moz-linear-gradient(top,  rgb(59,157,206) 0%, rgb(25,146,213) 51%, rgb(59,157,206) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(59,157,206)), color-stop(51%,rgb(25,146,213)), color-stop(100%,rgb(59,157,206)));
+	background: -webkit-linear-gradient(top,  rgb(59,157,206) 0%,rgb(25,146,213) 51%,rgb(59,157,206) 100%);
+	background: -o-linear-gradient(top,  rgb(59,157,206) 0%,rgb(25,146,213) 51%,rgb(59,157,206) 100%);
+	background: -ms-linear-gradient(top,  rgb(59,157,206) 0%,rgb(25,146,213) 51%,rgb(59,157,206) 100%);
+	background: linear-gradient(to bottom,  rgb(59,157,206) 0%,rgb(25,146,213) 51%,rgb(59,157,206) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b9dce', endColorstr='#3b9dce',GradientType=0 );
+}
+
+#gerenalWidgets li:hover, #Gen a:hover {
+	color: #fff;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+	background: rgb(0,183,234);
+	background: -moz-linear-gradient(top,  rgb(0,183,234) 0%, rgb(0,158,195) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,183,234)), color-stop(100%,rgb(0,158,195)));
+	background: -webkit-linear-gradient(top,  rgb(0,183,234) 0%,rgb(0,158,195) 100%);
+	background: -o-linear-gradient(top,  rgb(0,183,234) 0%,rgb(0,158,195) 100%);
+	background: -ms-linear-gradient(top,  rgb(0,183,234) 0%,rgb(0,158,195) 100%);
+	background: linear-gradient(to bottom,  rgb(0,183,234) 0%,rgb(0,158,195) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 );
+	border-color: transparent;
+}
+
+
+
+#CenterContainer {
+	width: 100%;
+	height: 100%;
+}
+ 
+#centralContent{
+background: #8a8a8a;
+}
+#loader {
+	padding: 3px;
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	vertical-align: middle;
+	background: #ededed;
+	opacity: 0.5;
+}
+
+.dojoDndItem {
+    padding: 3px;
+    font-size: 0.9em;
+}
+
+.dojoDndItemOver {
+	background-color: #141112;
+    /*background-color: #ededed;*/
+    cursor: pointer;
+}
+
+.dojoDndItemSelected {
+	background-color: #141112;
+    /*background-color: #5bbdea;*/
+    color: #444;
+}
+
+.dojoDndItemAnchor {
+	background-color: #141112;
+   /* background-color: #5bbdea;*/
+    color: black;
+}
+
+.dojoDndItemOver .dojoDndItemSelected {
+	background-color: #141112;
+   /* background-color: #ededed;*/
+}
+
+.dojoDndItemOver .dojoDndItemAnchor {
+	background-color: #141112;
+   /* background-color: #ededed;*/
+}
+
+.dojoDndItemBefore {
+    border-top: 2px solid #369;
+}
+
+.dojoDndItemAfter {
+    border-bottom: 2px solid #369;
+}
+
+.dojoDndAvatar {
+    border: 2px solid #ccc;
+}
+
+.dojoDndAvatarHeader {
+	background-color: #141112;
+    /*background-color: #aaa;*/
+}
+
+.dojoDndAvatarItem {
+	background-color: #141112;
+    /*background-color: #fff;*/
+    border-bottom: 1px solid #666;
+}
+
+.dojoDndAvatarItem .itemText {
+    font-size: 1.2em;
+}
+
+#collapse {
+    display: block;
+    position: absolute;
+    left: 234px;
+    z-index:200;
+    top: 50%;
+    margin-top: -20px;
+    height: 40px;
+    width: 11px;
+    margin-right: -12px;
+    background: #f5f5f5;
+   	border: 1px solid #aaa;
+   	border-left:0;
+   	line-height: 40px;
+   	text-align: left;
+   	cursor: pointer;
+   	color: #666;
+   	font-size: 12px;
+   	border-top-right-radius: 3px;
+   	border-bottom-right-radius: 3px;
+}
+
+#map {
+	position: absolute;
+	width: 100%;
+    height: 100%;
+    left: 234px;
+}
+
+#footer {
+	position: absolute;
+}
+
+.dijitButtonNode {
+     width: 125px;
+     height: 18px;
+}
+
+#gridDiv {
+	height: 600px;
+	width: 662px;
+}
+
+#beaconParameters {
+	top: 220px;
+	left: 350px;
+}
+
+#leftmenu {
+	position: absolute;
+	top:0;
+	width: 17%;
+	height: 100%;
+	/*background: #8a8a8a;*/
+
+
+
+}
+
+
+
+/* Helpdialog css */
+
+*{
+    margin:0;
+    padding:0;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 1;
+
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    transition: opacity .5s;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+} 
+.popup {
+    background-color: #8a8a8a;
+    border: 3px solid #666666;
+    display: inline-block;
+    left: 50%;
+    opacity: 0;
+    padding: 15px;
+    position: fixed;
+    text-align: justify;
+    top: 40%;
+    visibility: hidden;
+    z-index: 10;
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+    -moz-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+    -ms-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+    -o-box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+    box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.4) inset;
+
+    -webkit-transition: opacity .5s, top .5s;
+    -moz-transition: opacity .5s, top .5s;
+    -ms-transition: opacity .5s, top .5s;
+    -o-transition: opacity .5s, top .5s;
+    transition: opacity .5s, top .5s;
+}
+.overlay:target+.popup {
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+}
+.close {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-decoration: none;
+    top: -15px;
+    width: 30px;
+
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+}
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    font-size: 24px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.9);
+}
+.close:hover {
+    background-color: rgba(64, 128, 128, 0.8);
+}
+.popup p, .popup div {
+    margin-bottom: 10px;
+}
+.popup label {
+    display: inline-block;
+    text-align: left;
+    width: 120px;
+}
+

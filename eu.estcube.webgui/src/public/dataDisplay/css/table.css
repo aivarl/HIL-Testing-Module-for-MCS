@@ -1,0 +1,61 @@
+table.tftable {
+	font-size: 12px;
+	color: #333333;
+	width: 100%;
+	border-width: 0px;
+	border-color: rgba(10,10,10,0.9);
+	border-collapse: collapse;
+}
+
+table.tftable th {
+	font-family: 'Exo', sans-serif;
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: normal;
+    background-color: rgba(10,10,10,0.9);
+	border-width: 0px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #a9a9a9;
+	text-align: center;
+}
+
+table.tftable tr {
+	background-color: rgba(120,120,120,0.1);
+	/*background-color: rgba(100,100,100,0.1);
+/*    	-webkit-transition: background-color 0.25s; For Safari 3.1 to 6.0
+    transition: background-color 0.25s; */
+}
+
+/* table.tftable tr.flash {
+    background-color: rgba(0,255,0,0.2);
+    color: #ffffff;
+} */
+/* table.tftable tr:hover {
+	background-color: rgba(0,0,0,0.2);
+	color: #ffffff;
+} */
+
+/* .table-hover tbody tr:hover td,.table-hover tbody tr:hover th {
+    background-color: rgba(0,0,0,0.2);
+    color: #ffffff;
+} */
+
+table.tftable td {
+	font-size: 15px;
+	border-width: 0px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #a9a9a9;
+}
+
+/* Change view according to screen size */
+/* @media all and (max-width: 1470px) { */
+@media all and (max-width: 1505px) {
+    table.tftable th {
+        font-size: 15px;
+    }
+    table.tftable td {
+        font-size: 13px;
+    }
+}

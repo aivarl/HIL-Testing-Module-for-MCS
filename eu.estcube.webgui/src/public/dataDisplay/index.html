@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- To ensure proper rendering and touch zooming on mobile devices. -->
+<meta charset="utf-8" name="viewport"
+    content="width=device-width, initial-scale=1">
+
+<title>ESTCube-1 live data</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/table.css">
+<link href='http://fonts.googleapis.com/css?family=Exo:100,200,400,700'
+    rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700'
+    rel='stylesheet' type='text/css'>
+<meta name="apple-mobile-web-app-title" content="ESTCube">
+<link type="text/css" rel="stylesheet"
+    href="http://www.estcube.eu/sites/default/files/css/css_ogjvJnfni1_P_WxvXAHlUOgCs860b3ip9DNMapcIGeM.css"
+    media="all" />
+<link type="text/css" rel="stylesheet"
+    href="http://www.estcube.eu/sites/default/files/css/css_bbxVMW72QgTYC0-gdTO7ZnuwImk2D1LVIpkgDYUZKG4.css"
+    media="screen" />
+<link type="text/css" rel="stylesheet"
+    href="http://www.estcube.eu/sites/default/files/css/css_iFU6Ejbon6tcFSiHztZjZUtwJ6jQFYUwy_abwPnMH-4.css"
+    media="all" />
+<link type="text/css" rel="stylesheet"
+    href="http://www.estcube.eu/sites/default/files/css/css_0UlCmg9wHGsGSGrzhVU_gpl30J2YtzJREe6-QN6-aS0.css"
+    media="all" />
+<link type="text/css" rel="stylesheet"
+    href="css/css_Yz6vK4dD-vm9bLXRoUxKxx2E_KdCYLFLB4FePpXgn7c.css"
+    media="all" />
+
+<style type="text/css">
+.bs-example {
+    margin: 0px;
+}
+
+.blockPad {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.blockPad.header {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.block {
+    margin: 12px;
+    padding: 12px;
+    background-color: rgba(0, 150, 200, 0.2);
+}
+
+.block.time {
+    margin: 12px;
+    padding: 12px;
+    background-color: rgba(50, 50, 50, 0.2);
+}
+</style>
+
+</head>
+
+<body>
+
+    <div id="bg" style="display: block;"></div>
+    <div id="headerWrapper">
+        <h1>
+            <a href="#">ESTCube-1 live data</a>
+        </h1>
+    </div>
+
+    <div id="wrapper">
+        <div class="bs-example">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#EPS">EPS</a></li>
+                <li><a data-toggle="tab" href="#CDHS">CDHS</a></li>
+                <li><a data-toggle="tab" href="#COM">COM</a></li>
+                <li><a data-toggle="tab" href="#ADCS">ADCS</a></li>
+                <li><a data-toggle="tab" href="#CAM">CAM</a></li>
+            </ul>
+            <div class="tab-content blockPad header">
+                <!--    CDHS    -->
+                <div id="CDHS" class="tab-pane fade container-fluid">
+                    <h2>Command and Data Handling System</h2>
+                    <div class="row">
+                        <div
+                            class="col-xs-20 col-sm-14 col-sm-offset-3 col-md-10 col-md-offset-5 col-lg-6 col-lg-offset-7">
+                            <p>
+                            <table id="tfhover1"
+                                class="tftable table-hover table-hover"
+                                border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Value</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    data-bind='foreach: {data : cdhsRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                    <tr>
+                                        <td
+                                            data-bind="text: description"></td>
+                                        <td data-bind="text: value"
+                                            align="right"></td>
+                                        <td data-bind="text: unit"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>
+                        </div>
+                    </div>
+                </div>
+                <!--    EPS    -->
+                <div id="EPS"
+                    class="tab-pane fade in active container-fluid">
+                    <h2>Electrical Power System</h2>
+                    <div class="row">
+                        <div
+                            class="col-xs-20 col-sm-14 col-sm-offset-3 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-2 blockPad">
+                            <div class="block">
+                                <h3>Solar power production</h3>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsSolarRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: valueX"
+                                                align="right"></td>
+                                            <td data-bind="text: valueY"
+                                                align="right"></td>
+                                            <td data-bind="text: valueZ"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                <p>
+                                <h3>Magnetic torquer currents</h3>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsCoilRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: valueX"
+                                                align="right"></td>
+                                            <td data-bind="text: valueY"
+                                                align="right"></td>
+                                            <td data-bind="text: valueZ"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                                <p>
+                                <h3>EPS raw temperatures</h3>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsTempRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>
+                            </div>
+                        </div>
+                        <div
+                            class="col-xs-20 col-sm-14 col-sm-offset-3 col-md-5 col-md-offset-0 col-lg-4 blockPad">
+                            <div class="block">
+                                <h3>Power buses and Batteries</h3>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatteryRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td data-bind="text: valueX"
+                                                align="right"></td>
+                                            <td data-bind="text: valueY"
+                                                align="right"></td>
+                                            <td data-bind="text: valueZ"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatterySPBRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                            <td
+                                                data-bind="text: valueA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                align="right"></td>
+                                            <td
+                                                data-bind="text: unitA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                            <td
+                                                data-bind="text: valueB, style: { backgroundColor: onOffB == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffB == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                align="right"></td>
+                                            <td
+                                                data-bind="text: unitB, style: { backgroundColor: onOffB == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffB == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h4>Battery A</h4>
+                                <div title="Battery charge/discharge."
+                                    data-bind="html: batProgressA"></div>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatARows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                            <td data-bind="text: valueA"
+                                                align="right"></td>
+                                            <td data-bind="text: unitA"></td>
+                                            <td data-bind="text: valueB"
+                                                align="right"></td>
+                                            <td data-bind="text: unitB"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatATempRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h4>Battery B</h4>
+                                <div title="Battery charge/discharge."
+                                    data-bind="html: batProgressB"></div>
+                                <table id="tfhover"
+                                    class="tftable table-hover table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatBRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                            <td data-bind="text: valueA"
+                                                align="right"></td>
+                                            <td data-bind="text: unitA"></td>
+                                            <td data-bind="text: valueB"
+                                                align="right"></td>
+                                            <td data-bind="text: unitB"></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody
+                                        data-bind='foreach: {data : epsBatBTempRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td data-bind="text: value"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                            </div>
+                        </div>
+                        <div
+                            class="col-xs-20 col-sm-14 col-sm-offset-3 col-md-10 col-md-offset-0 col-lg-8 blockPad">
+                            <div class="block">
+                                <h3>Voltage regulators and power distribution</h3>
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <table id="tfhover"
+                                            class="tftable table-hover"
+                                            border="1">
+                                            <tbody
+                                                data-bind='foreach: {data : epsRegRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                                <tr>
+                                                    <td
+                                                        data-bind="text: description"></td>
+                                                    <td
+                                                        data-bind="text: value"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unit"></td>
+                                                    <td
+                                                        data-bind="text: valueA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unitA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                                    <td
+                                                        data-bind="text: valueB, style: { backgroundColor: onOffB == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffB == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unitB, style: { backgroundColor: onOffB == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffB == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(120,120,120,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <table id="tfhover"
+                                            class="tftable table-hover"
+                                            border="1">
+                                            <tbody
+                                                data-bind='foreach: {data : epsCtlPlRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                                <tr>
+                                                    <td
+                                                        data-bind="text: description"></td>
+                                                    <td
+                                                        data-bind="text: value"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unit"></td>
+                                                    <td
+                                                        data-bind="text: valueA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unitA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                                </tr>
+                                            </tbody>
+                                                                                <tbody
+                                        data-bind='foreach: {data : epsCtlPl12Rows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td data-bind="text: valueA"
+                                                align="right"></td>
+                                            <td data-bind="text: unitA"></td>
+                                        </tr>
+                                    </tbody>
+                                        </table>
+                                        <br>
+                                    </div>
+                                    <div class="span6">
+                                        <table id="tfhover"
+                                            class="tftable table-hover"
+                                            border="1">
+                                            <tbody
+                                                data-bind='foreach: {data : epsCtlRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                                <tr>
+                                                    <td
+                                                        data-bind="text: description"></td>
+                                                    <td
+                                                        data-bind="text: value"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unit"></td>
+                                                    <td
+                                                        data-bind="text: valueA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unitA, style: { backgroundColor: onOffA == 'OFF' ? 'rgba(255,0,0,0.5)' : 
+                                ( onOffA == 'ON' ? 'rgba(0,200,0,0.6)' : 'rgba(100,100,100,0.1)' ),
+                                 color: value == 'OFF' ? '#ffffff' : '#333333'}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--    COM    -->
+                <div id="COM" class="tab-pane fade container-fluid">
+                    <h2>Communications System</h2>
+                    <div class="row">
+                        <div
+                            class="col-xs-20 col-sm-14 col-sm-offset-3 col-md-8 col-md-offset-6 col-lg-6 col-lg-offset-7">
+                            <table id="tfhover"
+                                class="tftable table-hover" border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Value</th>
+                                        <th>Unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    data-bind='foreach: {data : comRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                    <tr>
+                                        <td
+                                            data-bind="text: description"></td>
+                                        <td data-bind="text: value"
+                                            align="right"></td>
+                                        <td data-bind="text: unit"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--    CAM    -->
+                <div id="CAM" class="tab-pane fade container-fluid">
+                    <h2>Camera system</h2>
+                    <div class="row">
+                        <div
+                            class="col-xs-20 col-sm-12 col-sm-offset-4 col-md-8 col-md-offset-6 col-lg-6 col-lg-offset-7">
+                            <table id="tfhover"
+                                class="tftable table-hover" border="1">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody
+                                    data-bind='foreach: {data : camRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                    <tr>
+                                        <td data-bind="text: name"></td>
+                                        <td data-bind="text: value"
+                                            align="right"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--    ADCS    -->
+                <div id="ADCS" class="tab-pane fade container-fluid">
+                    <h2>Attitude Determination and Control System</h2>
+                    <div class="row">
+                        <div
+                            class="col-xs-20 col-sm-12 col-sm-offset-4 col-md-7 col-md-offset-3 col-lg-6 col-lg-offset-4 blockPad">
+                            <div class="block">
+                                <h3>Gyros</h3>
+                                <h4>Vector</h4>
+                                <table id="tfhover"
+                                    class="tftable table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : adcsGyroVectorRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: valueX"
+                                                align="right"></td>
+                                            <td data-bind="text: valueY"
+                                                align="right"></td>
+                                            <td data-bind="text: valueZ"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <h4>Measurements</h4>
+                                <table id="tfhover"
+                                    class="tftable table-hover"
+                                    border="1">
+                                    <tbody
+                                        data-bind='foreach: {data : adcsGyroRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                        <tr>
+                                            <td
+                                                data-bind="text: description"></td>
+                                            <td data-bind="text: valueX"
+                                                align="right"></td>
+                                            <td data-bind="text: valueY"
+                                                align="right"></td>
+                                            <td data-bind="text: valueZ"
+                                                align="right"></td>
+                                            <td data-bind="text: unit"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br>
+                            </div>
+                            <br> <br>
+                            <div class="block">
+                                <h3>Sun sensors</h3>
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <h4>Vector</h4>
+                                        <table id="tfhover"
+                                            class="tftable table-hover"
+                                            border="1">
+                                            <tbody
+                                                data-bind='foreach: {data : adcsSunVectorRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                                <tr>
+                                                    <td
+                                                        data-bind="text: description"></td>
+                                                    <td
+                                                        data-bind="text: valueX"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: valueY"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: valueZ"
+                                                        align="right"></td>
+                                                    <td
+                                                        data-bind="text: unit"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-xs-20 col-sm-12 col-sm-offset-4 col-md-7 col-md-offset-0 col-lg-6 col-lg-offset-0 blockPad">
+                            <div class="row-fluid">
+                                <div class="block">
+                                    <h3>Magnetometers</h3>
+                                    <h4>Vector</h4>
+                                    <table id="tfhover"
+                                        class="tftable table-hover"
+                                        border="1">
+                                        <tbody
+                                            data-bind='foreach: {data : adcsMagnetoVectorRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                            <tr>
+                                                <td
+                                                    data-bind="text: description"></td>
+                                                <td
+                                                    data-bind="text: valueX"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueY"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueZ"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: unit"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Measurements</h4>
+                                    <table id="tfhover"
+                                        class="tftable table-hover"
+                                        border="1">
+                                        <tbody
+                                            data-bind='foreach: {data : adcsMagnetoRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                            <tr>
+                                                <td
+                                                    data-bind="text: description"></td>
+                                                <td
+                                                    data-bind="text: valueX"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueY"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueZ"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: unit"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                </div>
+                                <br>
+                                <div class="block">
+                                    <p>
+                                    <h4>Angular velocity</h4>
+                                    <table id="tfhover"
+                                        class="tftable table-hover"
+                                        border="1">
+                                        <tbody
+                                            data-bind='foreach: {data : adcsAngVectorRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                            <tr>
+                                                <td
+                                                    data-bind="text: description"></td>
+                                                <td
+                                                    data-bind="text: valueX"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueY"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueZ"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: unit"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Torque</h4>
+                                    <table id="tfhover"
+                                        class="tftable table-hover"
+                                        border="1">
+                                        <tbody
+                                            data-bind='foreach: {data : adcsTorqueRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                            <tr>
+                                                <td
+                                                    data-bind="text: description"></td>
+                                                <td
+                                                    data-bind="text: valueX"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueY"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueZ"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: unit"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4>Magnetic moment</h4>
+                                    <table id="tfhover"
+                                        class="tftable table-hover"
+                                        border="1">
+                                        <tbody
+                                            data-bind='foreach: {data : adcsMagnetMomentVectorRows,
+                                                        afterAdd: flashUpdatedElement}'>
+                                            <tr>
+                                                <td
+                                                    data-bind="text: description"></td>
+                                                <td
+                                                    data-bind="text: valueX"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueY"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: valueZ"
+                                                    align="right"></td>
+                                                <td
+                                                    data-bind="text: unit"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="block time">
+        <h4>Last updated: <span data-bind="text: timestamp"></span></h4>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type='text/javascript' src='js/knockout-3.1.0.js'></script>
+    <script type='text/javascript' src='js/knockout.mapping.js'></script>
+    <script type='text/javascript' src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/sprintf.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/switch2onOff.js"></script>
+    <script type="text/javascript" src="js/groupVectorsXYZ.js"></script>
+    <script type="text/javascript" src="js/groupRegulators.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>build</artifactId>
+        <groupId>eu.estcube</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../eu.estcube.build</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>webgui</artifactId>
+    <name>ESTCube Web GUI</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${version.selenium}</version>
+        </dependency>
+    </dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>${version.surefire}</version>
+			<dependencies>
+				<dependency>
+			  	<groupId>org.apache.maven.surefire</groupId>
+			  	<artifactId>surefire-junit47</artifactId>
+			  	<version>${version.surefire-junit47}</version>
+			 	</dependency>
+			</dependencies>
+			<configuration>
+				<includes>
+			  		<include>**/*.class</include>
+			 	</includes>
+				<excludedGroups>eu.estcube.eu.IntegrationTest</excludedGroups>
+			</configuration>
+			</plugin>
+			<plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>maven-replacer-plugin</artifactId>
+                <version>${version.replacer}</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <regex>true</regex>
+                    <includes>
+                        <include>src/public/scripts/webgui/common/Constants.js</include>
+                    </includes>
+                    <replacements>
+                        <replacement>
+                            <token>webgui.common.Constants.guiVersion=.*</token>
+                            <value>webgui.common.Constants.guiVersion=\"${project.version}\";</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
+            	<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>${project.groupId}.${project.artifactId}.${project.version}</finalName>
+					<outputDirectory>${project.basedir}/../eu.estcube.build/target/</outputDirectory>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- append to the packaging phase. -->
+						<goals>
+							<goal>single</goal> <!-- goals == mojos -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+        </plugins>
+    </build>
+</project>

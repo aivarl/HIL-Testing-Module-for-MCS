@@ -1,0 +1,530 @@
+
+
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FAFAFA;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#menu {
+    height: 2.2em;
+}
+
+div.progress {
+width: 100%;
+height: 100%;
+border: 1px solid #000000;
+background: #E2DCDC;
+}
+div.progress_load {
+height: 95%;
+border: 1px solid #000000;
+
+}
+
+#content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 2.2em;
+/*background-color: #00FF00;*/
+}
+
+.dgrid-cell{
+	width:10%;
+	position: relative;
+}
+
+.dgrid-sort-arrow {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	margin: 0;
+	width: 13px;
+	height: 11px;
+}
+
+/* general style to fill all available space */
+.fill {
+    width: 100%;
+    height: 100%;
+}
+
+.fill-system-dashboard {
+    width: 100%;
+    height: 50%;
+}
+
+.fill-system-dashboard-second {
+    width: 100%;
+    height: 50%;
+}
+
+.fill-tab {
+   height: 31em;
+   width:101.3%;
+   margin: -4px;
+}
+
+.fill-tab-pane {
+    height: 26.6em;
+    width:100%;
+    margin: 0px;
+    
+}
+
+
+.fill-parameters{
+	height: 10px;
+}
+
+.pageElement {
+    margin: 6px;
+}
+
+
+
+.commandingPageElementForm {
+    height: 20%;
+}
+
+.commandingPageElementList {
+    min-height: 100%;
+}
+
+.tle-container {
+    width: 100%;
+    height: 80%;
+}
+
+.tle-row-div {
+    padding: 3px;
+    margin: 1px;
+}
+
+#description-grid {
+    width: 110%;
+    height: 100px;
+}
+
+#sub-box{
+    background-color: red;
+    height:10px;
+}
+
+
+#parametersView {
+    height: 61%;
+}
+
+.tle-sat-id {
+    font-weight: 700;
+    margin-right: 2em;
+}
+
+.tle-span-uploader {
+    font-style: italic;
+    margin-right: 2em;
+    color: #919191;
+}
+
+.tle-lines {
+    padding: 1px;
+    margin: 1px;
+    font-weight: 400;
+}
+
+.tle-span-sat {
+    font-style: italic;
+    margin-right: 2em;
+}
+
+.tle-span-date {
+    font-weight: 700;
+    margin-right: 2em;
+}
+
+/* styles to format values */
+.value-ok {
+    color: #3C0;
+}
+
+.downlink {
+    color: #0080FF;
+}
+
+.value-warning {
+    color: #F90;
+}
+
+.redBar{
+	background :#FF0000 ;
+	background-color: #FF0000;
+	color  : white;
+	width  :  100%;
+	bottom : 0;
+	height : auto;
+	right    : 0;
+	top     : 0;
+	left   : 0;
+	margin : 0;
+	overflow: hidden;
+	padding : 0;
+	position: absolute;
+}
+
+
+.yellowBar {
+	background:#FFFF00;
+	background-color:#FFFF00;
+	color:#FFFF00;
+	width:100%;
+	bottom:0;
+	height:auto;
+	right:0;
+	top:0;
+	left:0;
+	overflow:hidden;
+	position:absolute;
+	margin:0;
+	padding:0;
+}
+
+.greenBar {
+	background:#33CC00;
+	background-color:#33CC00;
+	color:#33CC00;
+	width:100%;
+	bottom:0;
+	height:auto;
+	rigt:0;
+	top:0;
+	left:0;
+	overflow:hidden;
+	position:absolute;
+	margin:0;
+	padding:0;
+}
+
+
+.value-error {
+    color: red;
+}
+
+/* dgrid table columns */
+.field-period, .field-unit, .field-short-value, .field-duration {
+    width: 50px;
+}
+
+.field-short-numeric {
+    width: 50px;
+    text-align: right;
+}
+
+.field-groundStation, .field-satellite, .field-contact, .field-communication-link-type, .field-class, .field-long-unit {
+    width: 100px;
+}
+
+.field-level{
+	width:70px;
+}
+.field-timestamp, .field-short-name, .frame-address, .field-medium-value {
+    width: 150px;
+}
+
+.field-issuedBy, .field-insertedBy {
+    width: 200px;
+}
+.field-host, .field-status {
+    width: 150px;
+}
+
+.field-source {
+    width: 200px;
+}
+
+.field-name {
+    width: 400px;
+}
+
+.field-category {
+    width: 350px;
+}
+
+.field-value, .field-description {
+    width: 100%;
+    min-width: 100px;
+}
+
+/* Details view */
+.details-title {
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.details-label {
+    margin: 3px;
+    font-weight: 700;
+    width: 200px;
+}
+
+.details-value {
+    margin: 3px;
+    max-width: 550px;
+}
+
+.beacon-result-div {
+    border: 1px solid darkgrey;
+    padding: 5px;
+    margin-top: 10px;
+    width: 800px;
+    height: 600px;
+}
+
+.beacon-grid {
+    height: 92%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
+.past {
+    color: #aaa;
+    font-style: italic;
+}
+
+.future {
+    color: #000;
+}
+
+.in-progress {
+    font-weight: 700;
+    color: #000;
+}
+
+/* BeaconsView */
+
+.beaconsViewFilter {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+#beacon-list-grid .field-timestamp {
+    width: 60px;
+}
+
+#beacon-list-grid .field-value {
+    width: 200px;
+}
+
+#beacon-details-grid .field-name{
+    width: 200px;
+}
+
+.detailsGrid{
+	width:580px; 
+	height:450px;
+}
+
+.speaker {
+    background-image:url("../../images/speaker.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.field-telemetry-timestamp{
+	width:10%;
+}
+
+.field-telemetry-name{
+	width:10%;
+}
+
+.field-telemetry-description{
+	width:15%;
+}
+
+.field-telemetry-value{
+	width:5%;
+}
+
+.field-telemetry-unit{
+	width:3%;
+}
+
+
+.speaker-mute {
+    background-image:url("../../images/speakermuted.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.sound-table-labelCell {
+        text-align: center;
+}
+
+.stream-slider {
+        height: 200px;
+        margin-left: 12px;
+}
+
+.notifications-slider {
+        height: 200px;
+        margin-left: 25px;
+}
+
+
+/* Frame statistics grid */
+.frame-stats-grid {
+	height: 150px;
+}
+
+.frame-stats-gs {
+	width: 40%;
+}
+
+/*
+.frame-stats-count {
+	width: 25%;
+}
+
+.frame-stats-ratio {
+	width: 25%;
+}
+*/
+
+/* Adcs telemetry tab */
+.adcs-general-grid {
+	height: 150px;
+}
+.adcs-magnetometers-grid {
+	height: 250px;
+}
+.adcs-gyros-grid {
+	height: 470px;
+}
+.adcs-coils-grid {
+	height: 150px;
+}
+.adcs-temps-grid {
+}
+.adcs-sunsensors-grid {
+}
+.adcs-tether-grid {
+	height: 100px;
+}
+/* Contact info view page */
+#contactInfoContainer {
+	display: table;
+	background: #000;
+	color: #FFC000;
+	font-size: 5vmin;
+	font-family: Calibri;
+}
+
+#contactInfoContainer .contentbox {
+	display: table-cell; 
+	vertical-align: middle;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+#contactInfoContainer .clock {
+	font-size: 12vmin;
+}
+
+#contactInfoContainer #aoslos {
+	font-size: 20vmin;
+	width: 100%;
+}
+
+#contactInfoContainer #aoslos.AOS {
+	color: #00B050; /* Lighter green tone */
+}
+
+#contactInfoContainer #aoslos.LOS {
+	color: red;
+}
+
+#contactInfoContainer #aoslos #aoslostime{
+	text-align: right;
+}
+
+#contactInfoContainer .info {
+	padding-top: 3%;
+}
+/* Selector menu */
+.dijitRadioMenuItemHover .dijitCheckedMenuItemIcon {
+	background-position: -135px 50% !important;
+}
+.dijitRadioMenuItemCheckedHover .dijitCheckedMenuItemIcon {
+	background-position: -120px 50% !important;
+}
+.dijitRadioMenuItem .dijitCheckedMenuItemIcon {
+	background-position: -105px 50%;
+}
+.dijitRadioMenuItemChecked .dijitCheckedMenuItemIcon {
+	background-position: -90px 50%;
+}
+/* Parameter level colors */
+.parameter-level-SOFT {
+	background-color: #C3FF8F;
+}
+.parameter-level-HARD {
+	background-color: #FFFF8F;
+}
+.parameter-level-SANE {
+	background-color: #FF8F8F;
+}
+.parameter-level-OUT {
+	background-color: #CCCCCC;
+}
+
+.dojoxRangeSlider .dijitSliderLeftBumper, .dojoxRangeSlider .dijitSliderBottomBumper  {
+    background:#FFFFFF !important;
+}
+.dojoxRangeSliderBarContainer {
+    position:relative;
+}
+.dojoxRangeSlider .dijitSliderProgressBarV {
+    position:relative !important;
+}
+.dojoxRangeSlider .dijitSliderProgressBar {
+    overflow:hidden;
+    cursor:pointer;
+    
+}
+.dojoxRangeSlider .dijitSliderProgressBarV {
+    position:absolute !important;
+    border-width: 0px;
+}
+.dojoxRangeSlider .dijitSliderImageHandleH {
+    left: -50%;
+}
+.dijitSlider .dojoxRangeSliderBarContainer .dijitSliderProgressBarH,
+.dojoxRangeSlider .dijitSliderMoveableH {
+    right:auto !important;
+    outline:none;
+}
+.dojoxRangeSlider .dijitSliderMoveable {
+	height: 0;
+}
+
+#infopane .dijitTitlePaneContentInner {
+	padding: 0; !important
+}
+
+#contactinfotable td:last-child { 
+    width:100%;   
+} 
+
+#contactinfotable td {
+	vertical-align: top;
+}
