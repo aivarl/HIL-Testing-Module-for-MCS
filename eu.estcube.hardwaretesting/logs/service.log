@@ -1,0 +1,72 @@
+2016-05-11 19:49:08,182 [main           ] INFO  HardwareTesting                - Starting hardware testing
+2016-05-11 19:49:08,218 [main           ] INFO  ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a763f5d: startup date [Wed May 11 19:49:08 EEST 2016]; root of context hierarchy
+2016-05-11 19:49:08,256 [main           ] INFO  XmlBeanDefinitionReader        - Loading XML bean definitions from class path resource [META-INF/spring/camel-context.xml]
+2016-05-11 19:49:09,040 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from class path resource [service.properties]
+2016-05-11 19:49:09,041 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from URL [file:service.properties]
+2016-05-11 19:49:09,041 [main           ] WARN  PropertyPlaceholderConfigurer  - Could not load properties from URL [file:service.properties]: service.properties (The system cannot find the file specified)
+2016-05-11 19:49:09,058 [main           ] INFO  DefaultListableBeanFactory     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7b48392: defining beans [commandProcessor,scriptEngineConfig,defaultIdBuilder,addHeaders,entityRouter,collectionOfNamedObjectsSplitter,metadataFactory,tncFrameToLabel,jsonToCommand,namedObjectToJson,toJsonProcessor,satelliteLookup,prepareForInjection,timestampExtractor,updateTimestamp,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,propertyPlaceholder,jmsConnectionFactory,pooledConnectionFactory,jmsConfig,activemq,serialPortProcessor,serialDataTransferProcessor,template,consumerTemplate,eu.estcube.scriptengine:beanPostProcessor,eu.estcube.scriptengine]; root of factory hierarchy
+2016-05-11 19:49:09,422 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:49:09,598 [main           ] INFO  DefaultTypeConverter           - Loaded 183 type converters
+2016-05-11 19:49:09,619 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) is starting
+2016-05-11 19:49:09,647 [main           ] INFO  ManagementStrategyFactory      - JMX enabled.
+2016-05-11 19:49:09,647 [main           ] INFO  ultManagementLifecycleStrategy - StatisticsLevel at All so enabling load performance statistics
+2016-05-11 19:49:09,699 [main           ] INFO  SpringCamelContext             - Total 0 routes, of which 0 is started.
+2016-05-11 19:49:09,701 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) started in 0.080 seconds
+2016-05-11 19:49:09,718 [main           ] INFO  MainSupport                    - Apache Camel 2.10.0 starting
+2016-05-11 19:49:09,722 [main           ] INFO  LocalHostNameResolver          - Local host name: EE-F2WGF12
+2016-05-11 19:49:09,816 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:49:09,822 [main           ] INFO  SpringCamelContext             - Route: route1 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport]
+2016-05-11 19:49:09,987 [main           ] INFO  Mina2Consumer                  - Bound to server address: localhost/127.0.0.1:6200 using acceptor: (nio socket acceptor: localAddress(es): [/127.0.0.1:6200], managedSessionCount: 0)
+2016-05-11 19:49:09,988 [main           ] INFO  SpringCamelContext             - Route: route2 started and consuming from: Endpoint[mina2://tcp://localhost:6200?sync=false&transferExchange=true]
+2016-05-11 19:49:10,021 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:49:10,023 [main           ] INFO  SpringCamelContext             - Route: route3 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport.response]
+2016-05-11 19:49:10,066 [main           ] INFO  SpringCamelContext             - Route: route4 started and consuming from: Endpoint[timer://heartbeat?fixedRate=true&period=5000]
+2016-05-11 19:49:10,081 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:49:15,068 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:49:20,068 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:22,694 [main           ] INFO  HardwareTesting                - Starting hardware testing
+2016-05-11 19:50:22,722 [main           ] INFO  ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3daa57fb: startup date [Wed May 11 19:50:22 EEST 2016]; root of context hierarchy
+2016-05-11 19:50:22,758 [main           ] INFO  XmlBeanDefinitionReader        - Loading XML bean definitions from class path resource [META-INF/spring/camel-context.xml]
+2016-05-11 19:50:23,546 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from class path resource [service.properties]
+2016-05-11 19:50:23,547 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from URL [file:service.properties]
+2016-05-11 19:50:23,557 [main           ] WARN  PropertyPlaceholderConfigurer  - Could not load properties from URL [file:service.properties]: service.properties (The system cannot find the file specified)
+2016-05-11 19:50:23,574 [main           ] INFO  DefaultListableBeanFactory     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@21270107: defining beans [commandProcessor,scriptEngineConfig,defaultIdBuilder,addHeaders,entityRouter,collectionOfNamedObjectsSplitter,metadataFactory,tncFrameToLabel,jsonToCommand,namedObjectToJson,toJsonProcessor,satelliteLookup,prepareForInjection,timestampExtractor,updateTimestamp,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,propertyPlaceholder,jmsConnectionFactory,pooledConnectionFactory,jmsConfig,activemq,serialPortProcessor,serialDataTransferProcessor,template,consumerTemplate,eu.estcube.scriptengine:beanPostProcessor,eu.estcube.scriptengine]; root of factory hierarchy
+2016-05-11 19:50:23,922 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:24,114 [main           ] INFO  DefaultTypeConverter           - Loaded 183 type converters
+2016-05-11 19:50:24,135 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) is starting
+2016-05-11 19:50:24,163 [main           ] INFO  ManagementStrategyFactory      - JMX enabled.
+2016-05-11 19:50:24,163 [main           ] INFO  ultManagementLifecycleStrategy - StatisticsLevel at All so enabling load performance statistics
+2016-05-11 19:50:24,215 [main           ] INFO  SpringCamelContext             - Total 0 routes, of which 0 is started.
+2016-05-11 19:50:24,216 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) started in 0.080 seconds
+2016-05-11 19:50:24,232 [main           ] INFO  MainSupport                    - Apache Camel 2.10.0 starting
+2016-05-11 19:50:24,235 [main           ] INFO  LocalHostNameResolver          - Local host name: EE-F2WGF12
+2016-05-11 19:50:24,327 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:24,333 [main           ] INFO  SpringCamelContext             - Route: route1 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport]
+2016-05-11 19:50:24,496 [main           ] INFO  Mina2Consumer                  - Bound to server address: localhost/127.0.0.1:6200 using acceptor: (nio socket acceptor: localAddress(es): [/127.0.0.1:6200], managedSessionCount: 0)
+2016-05-11 19:50:24,497 [main           ] INFO  SpringCamelContext             - Route: route2 started and consuming from: Endpoint[mina2://tcp://localhost:6200?sync=false&transferExchange=true]
+2016-05-11 19:50:24,530 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:24,532 [main           ] INFO  SpringCamelContext             - Route: route3 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport.response]
+2016-05-11 19:50:24,574 [main           ] INFO  SpringCamelContext             - Route: route4 started and consuming from: Endpoint[timer://heartbeat?fixedRate=true&period=5000]
+2016-05-11 19:50:24,588 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:29,576 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:50:34,576 [ActiveMQ Task-1] INFO  FailoverTransport              - Successfully connected to tcp://localhost:61616
+2016-05-11 19:54:01,125 [main           ] INFO  HardwareTesting                - Starting hardware testing
+2016-05-11 19:54:01,154 [main           ] INFO  ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48d19bc8: startup date [Wed May 11 19:54:01 EEST 2016]; root of context hierarchy
+2016-05-11 19:54:01,193 [main           ] INFO  XmlBeanDefinitionReader        - Loading XML bean definitions from class path resource [META-INF/spring/camel-context.xml]
+2016-05-11 19:54:01,974 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from class path resource [service.properties]
+2016-05-11 19:54:01,974 [main           ] INFO  PropertyPlaceholderConfigurer  - Loading properties file from URL [file:service.properties]
+2016-05-11 19:54:01,988 [main           ] WARN  PropertyPlaceholderConfigurer  - Could not load properties from URL [file:service.properties]: service.properties (The system cannot find the file specified)
+2016-05-11 19:54:02,005 [main           ] INFO  DefaultListableBeanFactory     - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@239a0feb: defining beans [commandProcessor,scriptEngineConfig,defaultIdBuilder,addHeaders,entityRouter,collectionOfNamedObjectsSplitter,metadataFactory,tncFrameToLabel,jsonToCommand,namedObjectToJson,toJsonProcessor,satelliteLookup,prepareForInjection,timestampExtractor,updateTimestamp,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,propertyPlaceholder,jmsConnectionFactory,pooledConnectionFactory,jmsConfig,activemq,serialPortProcessor,serialDataTransferProcessor,template,consumerTemplate,eu.estcube.scriptengine:beanPostProcessor,eu.estcube.scriptengine]; root of factory hierarchy
+2016-05-11 19:54:02,539 [main           ] INFO  DefaultTypeConverter           - Loaded 183 type converters
+2016-05-11 19:54:02,561 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) is starting
+2016-05-11 19:54:02,590 [main           ] INFO  ManagementStrategyFactory      - JMX enabled.
+2016-05-11 19:54:02,590 [main           ] INFO  ultManagementLifecycleStrategy - StatisticsLevel at All so enabling load performance statistics
+2016-05-11 19:54:02,643 [main           ] INFO  SpringCamelContext             - Total 0 routes, of which 0 is started.
+2016-05-11 19:54:02,644 [main           ] INFO  SpringCamelContext             - Apache Camel 2.10.0 (CamelContext: eu.estcube.scriptengine) started in 0.083 seconds
+2016-05-11 19:54:02,660 [main           ] INFO  MainSupport                    - Apache Camel 2.10.0 starting
+2016-05-11 19:54:02,663 [main           ] INFO  LocalHostNameResolver          - Local host name: EE-F2WGF12
+2016-05-11 19:54:02,763 [main           ] INFO  SpringCamelContext             - Route: route1 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport]
+2016-05-11 19:54:02,933 [main           ] INFO  Mina2Consumer                  - Bound to server address: localhost/127.0.0.1:6200 using acceptor: (nio socket acceptor: localAddress(es): [/127.0.0.1:6200], managedSessionCount: 0)
+2016-05-11 19:54:02,934 [main           ] INFO  SpringCamelContext             - Route: route2 started and consuming from: Endpoint[mina2://tcp://localhost:6200?sync=false&transferExchange=true]
+2016-05-11 19:54:02,975 [main           ] INFO  SpringCamelContext             - Route: route3 started and consuming from: Endpoint[activemq://queue:estcube.hardwaretesting.serialport.response]
+2016-05-11 19:54:03,021 [main           ] INFO  SpringCamelContext             - Route: route4 started and consuming from: Endpoint[timer://heartbeat?fixedRate=true&period=5000]

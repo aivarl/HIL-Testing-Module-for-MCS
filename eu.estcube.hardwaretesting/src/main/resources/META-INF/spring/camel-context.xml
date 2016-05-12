@@ -9,7 +9,7 @@
         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <context:component-scan
-            base-package="eu.estcube.scriptengine, org.hbird.business.api, org.hbird.business.core, eu.estcube.common">
+            base-package="eu.estcube.hardwaretesting, org.hbird.business.api, org.hbird.business.core, eu.estcube.common">
         <context:exclude-filter type="regex" expression="eu\.estcube\.common\.utils\..*"/>
         <context:exclude-filter type="regex" expression="eu\.estcube\.common\.processor\..*"/>
     </context:component-scan>
@@ -47,11 +47,7 @@
         <property name="configuration" ref="jmsConfig"/>
     </bean>
 
-    <bean id="scriptIO" class="eu.estcube.scriptengine.camel.CamelScriptIO">
-        <constructor-arg ref="template"/>
-    </bean>
-
-    <bean id="hardwareTestingScriptIO" class="eu.estcube.scriptengine.camel.HardwareTestingCamelScriptIO">
+<!--     <bean id="scriptIO" class="eu.estcube.scriptengine.camel.CamelScriptIO">
         <constructor-arg ref="template"/>
     </bean>
 
@@ -59,11 +55,10 @@
         <constructor-arg ref="template"/>
     </bean>
 
-    <bean id="scriptRunProcessor" class="eu.estcube.scriptengine.camel.ScriptRunProcessor" />
-
-    <bean id="testingScriptRunProcessor" class="eu.estcube.scriptengine.camel.TestingScriptRunProcessor" />
-
     <bean id="scriptContext" class="eu.estcube.scriptengine.ScriptContext"/>
+    <bean id="scriptRunProcessor" class="eu.estcube.scriptengine.camel.ScriptRunProcessor" /> -->
+    <bean id="serialPortProcessor" class="eu.estcube.hardwaretesting.camel.SerialPortProcessor" />
+    <bean id="serialDataTransferProcessor" class="eu.estcube.hardwaretesting.camel.SerialDataTransferProcessor" />
 
     <camelContext id="eu.estcube.scriptengine" xmlns="http://camel.apache.org/schema/spring">
         <template id="template"/>

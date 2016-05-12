@@ -17,6 +17,7 @@ public class WebserverMonitoringDispatcher extends WebserverRouteBuilder {
     public static final String DESTINATION_BUSINESS_CARDS = "direct:businessCards";
     public static final String DESTINATION_UNFILTERED = "direct:unfiltered";
     public static final String DESTINATION_SCRIPTOUTPUT = "direct:scriptoutput";
+    public static final String DESTINATION_HARDWARETESTINGOUTPUT = "direct:hardwaretestingoutput";
 
     /** @{inheritDoc . */
     @Override

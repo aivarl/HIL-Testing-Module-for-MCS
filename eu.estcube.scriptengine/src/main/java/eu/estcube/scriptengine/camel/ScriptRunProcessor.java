@@ -92,10 +92,9 @@ public class ScriptRunProcessor implements AsyncProcessor {
         Script script = (Script) body;
         LOG.info("Received script object with length " + script.getCode().length());
 
-        ScriptCompiler scriptCompiler = ScriptCompiler.from(script.getCode());
         ScriptBase scriptBase = null;
         try {
-            scriptBase = scriptCompiler.compile();
+            scriptBase = ScriptCompiler.simpleCompile(script.getCode());
         } catch (ScriptCompilationError e) {
             out.setBody(createCompileErrorMessage(e));
             return;

@@ -15,6 +15,7 @@ import eu.estcube.webserver.automation.TelemetryProcessor;
 import eu.estcube.webserver.routes.WebserverMonitoringDispatcher;
 import eu.estcube.webserver.script.request.ScriptServlet;
 import eu.estcube.webserver.script.upload.ScriptSubmitServlet;
+
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.websocket.WebsocketComponent;
 import org.apache.camel.spring.Main;
@@ -66,6 +67,8 @@ import eu.estcube.webserver.radiobeacon.BeaconListServlet;
 import eu.estcube.webserver.radiobeacon.RadioBeaconServlet;
 import eu.estcube.webserver.radiobeacon.RadioBeaconTranslationServlet;
 import eu.estcube.webserver.routes.WebserverRouteBuilder;
+import eu.estcube.webserver.test.request.HardwareTestServlet;
+import eu.estcube.webserver.test.upload.HardwareTestSubmitServlet;
 import eu.estcube.webserver.tle.request.TleServlet;
 import eu.estcube.webserver.tle.upload.TleSubmitServlet;
 import eu.estcube.webserver.tle.upload.TleUploadRequestConverter;
@@ -137,6 +140,12 @@ public class WebServer extends RouteBuilder {
 
     @Autowired
     private ScriptSubmitServlet scriptUploadServlet;
+
+    @Autowired
+    private HardwareTestSubmitServlet hardwareTestUploadServlet;
+
+    @Autowired
+    private HardwareTestServlet hardwareTestServlet;
 
     @Autowired
     private ScriptServlet scriptServlet;
@@ -237,6 +246,30 @@ public class WebServer extends RouteBuilder {
         from(StandardEndpoints.CALIBRATED_PARAMETERS)
                 .process(telemetryProcessor)
                 .to("activemq:topic:estcube.scriptengine.telemetry");
+        /* HARDWARE TESTING ROUTES */
+        // Connecting to the serial port [HardwareTestServlet.java].
+        from("activemq:queue:estcube.hardwaretesting.serialport.output")
+                .to(WebserverMonitoringDispatcher.DESTINATION_HARDWARETESTINGOUTPUT);
+
+        /**In a standalone project, where the user would just run the
+         * hardwaretesting project, things would look like this:
+         * from(hardwaretesting.command).to(over the internet send it to a
+         * hardwaretesting project running instance).
+         * Now the command is in hardwaretesting project. Send it to Arduino,
+         * wait for a response and send it over the internet back to this WebServer.
+         * WebServer will listen to this internet endpoint and send incoming data
+         * to "hardwaretesting.response". That's it.
+         */
+
+        // Send commands to testing module
+        from("activemq:topic:estcube.hardwaretesting.command")
+            .to("mina2:tcp://localhost:" + "6200" + "?transferExchange=true&sync=false");
+        // Recieve commands from testing module
+        // Will be sent to [HardwareTestingCamelScriptIO]'s process(exchange) method.
+        from("mina2:tcp://localhost:" + "6201" + "?textline=true&sync=false")
+            .to("activemq:topic:estcube.hardwaretesting.response");
+        
+        
 
         /* TLE */
         // submit
@@ -332,6 +365,8 @@ public class WebServer extends RouteBuilder {
         mappings.add(addServlet(context, "/tle/submit", tleUploadServlet, constraint));
         mappings.add(addServlet(context, "/tle", tleServlet, constraint));
         mappings.add(addServlet(context, "/script/submit", scriptUploadServlet, constraint));
+        mappings.add(addServlet(context, "/hardwareTest/submit", hardwareTestUploadServlet, constraint));
+        mappings.add(addServlet(context, "/hardwareTest/getPorts", hardwareTestServlet, constraint));
         mappings.add(addServlet(context, "/script/request", scriptServlet, constraint));
         mappings.add(addServlet(context, "/sendCommand", gcpSubmitCommandServlet, commandingConstraint));
         mappings.add(addServlet(context, "/getCommands", gcpCommandsAutoCompleteServlet, constraint));

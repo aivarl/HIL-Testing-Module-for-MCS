@@ -47,6 +47,10 @@ angular
 
         TOPIC_SCRIPT_SUBMIT:                "/script/submit",
 
+        TOPIC_HARDWARE_TEST_SUBMIT:         "/hardwareTest/submit",
+
+        TOPIC_HARDWARE_TEST_PORTS:          "/hardwareTest/getPorts",
+
         URL_CATALOGUE_SATELLITES:           "/catalogue/satellites",
         URL_CATALOGUE_GROUND_STATIONS:      "/catalogue/groundstations/",
         URL_CATALOGUE_ORBITAL_STATES:       "/catalogue/orbitalstates/",
@@ -63,6 +67,7 @@ angular
         WEBSOCKET_PARAMETER_LEVELS:         "/hbird.out.parameters.levels",
         WEBSOCKET_SYSTEM_LOG:               "/hbird.out.systemlog",
         WEBSOCKET_SCRIPTOUTPUT:             "/hbird.out.script.output",
+        WEBSOCKET_HARDWARETESTINGOUTPUT:     "/hbird.out.hardwaretesting.output",
         WEBSOCKET_ORBITAL_PREDICTIONS:      "/orbital.predictions",
         WEBSOCKET_SYSTEM_MESSAGES:          "/hbird.out.events",
         WEBSOCKET_TRANSPORT:                "/estcube.out.transport",

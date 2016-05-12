@@ -2,7 +2,10 @@ package eu.estcube.scriptengine;
 
 import eu.estcube.scriptengine.camel.CamelScriptIO;
 import eu.estcube.scriptengine.camel.CamelScriptLogger;
+import eu.estcube.scriptengine.camel.HardwareTestingCamelScriptIO;
 import eu.estcube.scriptengine.camel.ScriptRunProcessor;
+import eu.estcube.scriptengine.camel.TestingScriptRunProcessor;
+
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.spring.Main;
 import org.hbird.business.core.AddHeaders;
@@ -21,6 +24,7 @@ public class ScriptEngine extends RouteBuilder {
     private static final Logger LOG = LoggerFactory.getLogger(ScriptEngine.class);
 
     public static final String SCRIPT = "activemq:queue:estcube.scriptengine.script";
+    public static final String HARDWARE_SCRIPT = "activemq:queue:estcube.hardwaretesting.script";
 
     @Autowired
     private ScriptEngineConfig config;
@@ -33,7 +37,13 @@ public class ScriptEngine extends RouteBuilder {
     private CamelScriptIO scriptIO;
 
     @Autowired
+    private HardwareTestingCamelScriptIO hardwareTestingScriptIO;
+
+    @Autowired
     private ScriptRunProcessor scriptRunProcessor;
+
+    @Autowired
+    private TestingScriptRunProcessor testingScriptRunProcessor;
 
     @Override
     public void configure() throws Exception {
@@ -42,8 +52,15 @@ public class ScriptEngine extends RouteBuilder {
                 .process(scriptRunProcessor)
                 .to(CamelScriptLogger.SCRIPT_MESSAGE);
 
+        from(HARDWARE_SCRIPT)
+                .process(testingScriptRunProcessor)
+                .to(CamelScriptLogger.SCRIPT_MESSAGE);
+
         from(CamelScriptIO.SCRIPT_IN)
                 .process(scriptIO);
+
+        from(HardwareTestingCamelScriptIO.TESTINGSCRIPT_IN)
+                .process(hardwareTestingScriptIO);
 
         BusinessCard card = new BusinessCard(config.getServiceId(), config.getServiceName());
         card.setPeriod(config.getHeartBeatInterval());

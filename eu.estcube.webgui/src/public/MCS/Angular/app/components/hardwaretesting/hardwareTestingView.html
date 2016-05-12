@@ -1,21 +1,43 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-7" style="height: 500px">
-		<div class="panel panel-primary">
-  <div class="panel-heading">LOG</div>
-  <div class="panel-body fixed-panel">
-  		{{scriptLog}}
-  </div>
-</div>
-		</div>
+        <!-- LOG -->
+        <div class="col-md-4" style="height: 500px">
+            <div class="panel panel-primary">
+                <div class="panel-heading">LOG</div>
+                <div id="logWindow" class="panel-body fixed-panel" style="height: 650px">
+                    <div ng-repeat="entry in log">
+                        <span ng-style="{color: getTypeColor(entry.type)}">{{entry.type}}</span>: {{entry.msg}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SCRIPT -->
+		<div class="col-md-4" style="height: 500px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">SCRIPT</div>
+				<div id="editor" style="height: 550px"></div>
+			</div>
+            <div class="form-group">
+                <label class="control-label" for="inputDefault"><b>Send
+                        command:</b></label>
+                <div class="input-group">
+                    <input type="text" class="form-control"
+                        ng-model="command"> <span
+                        class="input-group-btn">
+                        <button ng-click="sendCommand()"
+                            class="btn btn-default" type="button">Send</button>
+                    </span>
+                </div>
+            </div>
+        </div>
 
-		<div class="col-md-5">
+		<div class="col-md-4">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					Script: hardwareTest.mcs
+					Script: {{fileName}}
 
 					<div class="btn-group">
-						<input type="file" id="file" name="file"/>
+						<input type="file" id="file" name="file" />
 						<a ng-click="loadTest()" class="btn btn-default">Load test</a>
 					</div>
 				</div>
@@ -25,68 +47,47 @@
 				<div class="btn-group btn-group-justified">
 					<a ng-click="startTest()" class="btn btn-default"><span
 						class="glyphicon glyphicon-play"></span> START</a> <a
-						ng-click="stopTest()" class="btn btn-default">STOP</a> <a class="btn btn-default">PAUSE</a>
-					<a class="btn btn-default">NEXT STEP</a>
+						ng-click="stopTest()" class="btn btn-default">STOP</a> <a
+						class="btn btn-default">PAUSE</a> <a class="btn btn-default">NEXT
+						STEP</a>
 				</div>
 			</div>
-			<div class="panel panel-primary">
-				<div class="panel-heading">Hardware connection:</div>
-				<div class="panel-body">Status: Not connected</div>
+			<div class="panel panel-primary" ><!-- ng-class="{'panel-primary': portStatusType == 'Info' , 'panel-success': portStatusType == 'Trace', 'panel-warning': portStatusType == 'Warning', 'panel-danger': portStatusType == 'Error'}"> -->
+				<div class="panel-heading">
+					Hardware connection. <br /> Select a Serial Port: <br />
+					<select class="form-control" ng-model="selectedPort"
+						ng-options="port[1] for port in serialPorts"></select>
+				</div>
+				<div class="panel-body">Status: {{portStatusMessage}}</div>
+				<div class="btn-group btn-group-justified">
+					<a ng-click="connectHardware()" class="btn btn-default"><span
+						class="glyphicon glyphicon-play"></span> CONNECT</a> <a
+						ng-click="disconnectHardware()" class="btn btn-default">DISCONNECT</a>
+				</div>
 			</div>
-			<div class="jumbotron">
+            <!-- TEST RESULTS DIV -->
+            <div id="testResults">
 				<p>
-					<b>TEST RESULTS:</b>
+					<h4>TEST RESULTS:</h4>
 				</p>
 				<table class="table table-striped table-hover ">
 					<thead>
 						<tr>
-							<th>#</th>
 							<th>Name</th>
-							<th>Fail</th>
-							<th>Pass</th>
+							<th>Result</th>
+							<th>Details</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
-						</tr>
-						<tr class="success">
-							<td>2</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
-						</tr>
-						<tr class="danger">
-							<td>3</td>
-							<td>Column content</td>
-							<td>Column content</td>
-							<td>Column content</td>
+						<tr ng-repeat="test in tests" ng-class="{'success': test.result == 'PASSED', 'danger': test.result == 'FAILED'}">
+							<td>{{test.name}}</td>
+                            <td>{{test.result}}</td>
+                            <td>{{test.reason}}</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<!--             <button ng-click="runScript()">Run script</button>
-            <div style="width: 100%; font-family: Consolas; padding: 2px; overflow-y: auto; max-height: 500px">
-                <div ng-repeat="entry in log">
-                    <span ng-style="{color: getTypeColor(entry.type)}">{{entry.type}}</span>: {{entry.msg}}
                 </div>
-            </div> -->
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<div class="form-group">
-				<label class="control-label" for="inputDefault"><b>Send command:</b></label>
-				<div class="input-group">
-					<input type="text" class="form-control" ng-model="command"> <span
-						class="input-group-btn">
-						<button ng-click="sendCommand()" class="btn btn-default" type="button">Send</button>
-					</span>
-				</div>
-			</div>
+                <a ng-click="saveTestResults()" class="btn btn-default">Save test results</a>
 		</div>
 	</div>
 </div>

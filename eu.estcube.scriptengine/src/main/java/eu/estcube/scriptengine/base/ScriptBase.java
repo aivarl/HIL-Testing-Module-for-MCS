@@ -2,6 +2,7 @@ package eu.estcube.scriptengine.base;
 
 import eu.estcube.common.script.io.ScriptIOPayload;
 import eu.estcube.scriptengine.ScriptContext;
+import eu.estcube.scriptengine.io.ScriptIO;
 import groovy.lang.Script;
 
 import java.lang.reflect.Constructor;
@@ -10,7 +11,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created by Joonas on 29.6.2015.
+ * ScriptBase is the superclass of all MCSScript instances (the compiler internally creates a class that extends ScriptBase).
+ * It contains all the methods that are available for the script to use.
+ *
+ * To run a ScriptBase instance, call the {@link ScriptBase#run()} method.
  */
 public abstract class ScriptBase extends Script {
     // TODO all state running stuff should probably be refactored into its own
@@ -69,11 +73,14 @@ public abstract class ScriptBase extends Script {
 
     public void send(String name, Map opts) {
         ScriptIOPayload payload = new ScriptIOPayload();
+        ScriptIO scriptIO = context.getScriptIO();
+        if("hardwaretest".equals(identifier))
+            scriptIO = context.getHardwareTestingScriptIO();
 
         if (opts != null)
             payload.putAll(opts);
 
-        context.getScriptIO().send(name, payload);
+        scriptIO.send(name, payload);
     }
 
     public void send(String name) {
@@ -95,7 +102,11 @@ public abstract class ScriptBase extends Script {
 
         final long start = System.currentTimeMillis();
         while (true) {
-            ScriptIOPayload pl = context.getScriptIO().poll(name);
+            ScriptIO scriptIO = context.getScriptIO();
+            if("hardwaretest".equals(identifier))
+                scriptIO = context.getHardwareTestingScriptIO();
+
+            ScriptIOPayload pl = scriptIO.poll(name);
             if (pl != null)
                 return pl.getMap();
 

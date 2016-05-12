@@ -167,6 +167,11 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.fazecast</groupId>
+			<artifactId>jSerialComm</artifactId>
+			<version>[1.0.0,2.0.0)</version>
+		</dependency>
 
 		<!-- TODO - 14.08.2013, kimmell - remove when upgrading to Camel 2.12 -->
 		<dependency>

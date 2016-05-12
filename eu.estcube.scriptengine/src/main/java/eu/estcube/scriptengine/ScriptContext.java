@@ -16,6 +16,9 @@ public class ScriptContext {
     private ScriptIO scriptIO;
 
     @Autowired
+    private ScriptIO hardwareTestingScriptIO;
+
+    @Autowired
     private ScriptLogger scriptLogger;
 
     public ScriptIO getScriptIO() {
@@ -26,7 +29,15 @@ public class ScriptContext {
         this.scriptIO = scriptIO;
     }
 
-    public ScriptLogger getScriptLogger() {
+    public ScriptIO getHardwareTestingScriptIO() {
+		return hardwareTestingScriptIO;
+	}
+
+	public void setHardwareTestingScriptIO(ScriptIO hardwareTestingScriptIO) {
+		this.hardwareTestingScriptIO = hardwareTestingScriptIO;
+	}
+
+	public ScriptLogger getScriptLogger() {
         return scriptLogger;
     }
 

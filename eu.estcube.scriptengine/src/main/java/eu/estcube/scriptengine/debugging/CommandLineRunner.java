@@ -1,10 +1,12 @@
 package eu.estcube.scriptengine.debugging;
 
+import com.google.common.io.Files;
 import eu.estcube.scriptengine.compilation.ScriptCompiler;
 import eu.estcube.scriptengine.base.ScriptBase;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /**
@@ -50,10 +52,10 @@ public class CommandLineRunner {
             lastFileName = fileName;
 
             try {
-                ScriptBase scriptBase = ScriptCompiler.from(new File(fileName + ".mcs"))
+                ScriptBase scriptBase = new ScriptCompiler()
                         .setShouldSpewBytecode(shouldSpew)
                         .setShouldBeTypeChecked(shouldTypeCheck)
-                        .compile();
+                        .compile(Files.toString(new File(fileName + ".mcs"), Charset.forName("UTF-8")));
                 scriptBase.setContext(new DebugScriptContext());
                 scriptBase.run();
             } catch (Exception e) {
@@ -88,10 +90,10 @@ public class CommandLineRunner {
                 throw new IllegalStateException("No filename provided");
 
             try {
-                ScriptBase scriptBase = ScriptCompiler.from(new File(fileName))
+                ScriptBase scriptBase = new ScriptCompiler()
                         .setShouldSpewBytecode(spewBytecode)
-                        // .setShouldBeTypeChecked(false)
-                        .compile();
+                        //.setShouldBeTypeChecked(shouldTypeCheck)
+                        .compile(Files.toString(new File(fileName + ".mcs"), Charset.forName("UTF-8")));
                 scriptBase.setContext(new DebugScriptContext());
                 scriptBase.run();
             } catch (Exception e) {

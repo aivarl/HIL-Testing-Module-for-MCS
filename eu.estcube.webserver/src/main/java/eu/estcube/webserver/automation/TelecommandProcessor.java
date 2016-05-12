@@ -55,7 +55,6 @@ public class TelecommandProcessor implements Processor {
         Message in = exchange.getIn();
         Message out = exchange.getOut();
 
-        LOG.info("TELECOMMANDPROCESSOR!!!!!!!!s");
         ScriptCommand input = in.getBody(ScriptCommand.class);
 
         String[] data = input.getCommandName().split(":", 2);
